@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:03:28 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/13 19:16:23 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:27:08 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	fractal_iter(t_fractal *fractal, double x, double y)
 		c_re = x;
 		c_im = y;
 	}
-	// else if (fractal->name == JULIA)
-	// {
-	// 	c_re = 0;
-	// 	c_im = 0;
-	// }
+	 else if (fractal->name == JULIA)
+	{
+		c_re = 0;
+		c_im = 0;
+	}
 	i = 0;
 	while (i < 100 && (x * x + y * y < 4))
 	{

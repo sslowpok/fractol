@@ -25,7 +25,7 @@ LIBFT =		$(addprefix $(LIBFT_DIR), libft.a)
 RM =	rm -rf
 CC =	gcc
 CFLAGS =	-Wall -Wextra -Werror
-LDFLAGS	=	-L$(LIBFT_DIR) -L$(PRINTF_DIR) -L$(LIBMLX_DIR) -lmlx -framework OpenGL -framework Appkit -lz
+LDFLAGS	=	-L$(LIBFT_DIR) -L$(PRINTF_DIR) -L$(LIBMLX_DIR) -lmlx -Lmlx -framework OpenGL -framework Appkit -lz
 
 all:	$(PRINTF) $(LIBFT) $(NAME)
 
@@ -50,8 +50,8 @@ $(OBJ_DIR):
 clean:
 		$(RM) $(OBJS_DIR)
 		make clean -C ./libft/
-		make clean -C ./printf/
-		make clean -C ./mlx/
+		#make clean -C ./printf/
+		#make clean -C ./mlx/
 
 fclean:	clean
 		$(RM) $(NAME)

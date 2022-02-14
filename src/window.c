@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:27:58 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/13 17:57:45 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:35:45 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_fractal	*init_fractal(int argc, char **argv)
 	if (!fractal)
 		exit (BAD_MEMALLOC);
 	fractal_name(argc, argv, fractal);
-	fractal->max_iter = 100;
+	fractal->max_iter = MAX_ITER;
 	return (fractal);
 }
 

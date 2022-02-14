@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:07:49 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/13 18:52:53 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/14 09:36:45 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ int	close_win(int keycode, t_win *list)
 	return (keycode);
 }
 
-// void	move(int keycode, t_fractal *fractal)
-// {
-// 	double	shift;
+//void	move(int keycode, t_fractal *fractal)
+//{
+//	double	shift;
 
-// 	// shift = ()
-// }
+//	shift = (2.0 + 2.0) * SHIFT_SCALE;
+//	if (keycode == KEY_A)
+//	{
+//		fractal->max_iter
+//	}
+//}
 
 int	key_hook(int keycode, t_win *list)
 {
