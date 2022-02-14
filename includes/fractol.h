@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:48:10 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 09:39:06 by alex             ###   ########.fr       */
+/*   Updated: 2022/02/14 16:18:58 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_fractal
 	int		name;
 	int		max_iter;
 	int		color;
+	double	scale;
 }	t_fractal;
 
 typedef struct	s_win {
@@ -48,10 +49,12 @@ typedef struct	s_win {
 	t_fractal	*fractal;
 }		t_win;
 
-void	new_window(int argc, char **argv);
+t_win	*new_window(int argc, char **argv);
 void	my_mlx_pixel_put(t_win *data, int x, int y, int color);
 int		key_hook(int keycode, t_win *list);
 void	draw_fractal(t_win *list);
 void	my_mlx_pixel_put(t_win *data, int x, int y, int color);
+int		mouse(int keycode, int x, int y, t_win *list);
+int		close_win(int keycode, t_win *list);
 
 #endif

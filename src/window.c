@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:27:58 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 09:35:45 by alex             ###   ########.fr       */
+/*   Updated: 2022/02/14 16:24:37 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 #include "../includes/error.h"
+
+// int	ft_exit(int keycode)
+// {
+// 	(void)keycode;
+// 	exit(0);
+// 	return (0);
+// }
 
 void	argc_check(int argc)
 {
@@ -22,7 +29,7 @@ void	argc_check(int argc)
 	}
 }
 
-static void	new_image(t_win *list)
+static t_win	*new_image(t_win *list)
 {
 	list->img = mlx_new_image(list->mlx, WIDTH, HEIGHT);
 	if (!list->img)
@@ -31,6 +38,7 @@ static void	new_image(t_win *list)
 				&list->line_length, &list->endian);
 	if (!list->addr)
 		exit (INIT_ERROR);
+	return (list);
 }
 
 void	fractal_name(int argc, char **argv, t_fractal *fractal)
@@ -53,10 +61,11 @@ t_fractal	*init_fractal(int argc, char **argv)
 		exit (BAD_MEMALLOC);
 	fractal_name(argc, argv, fractal);
 	fractal->max_iter = MAX_ITER;
+	fractal->scale = 250;
 	return (fractal);
 }
 
-void	new_window(int argc, char **argv)
+t_win	*new_window(int argc, char **argv)
 {
 	t_win	*list;
 
@@ -71,8 +80,11 @@ void	new_window(int argc, char **argv)
 		exit (INIT_ERROR);
 	new_image(list);
 	list->fractal = init_fractal(argc, argv);
+	// mlx_hook(list->mlx_win, 2, 0, key_hook, list);
+	// mlx_hook(list->mlx_win, 17, 0, close_win, list);
+	// mlx_hook(list->mlx_win, 4, 0, mouse, list);
 	mlx_key_hook(list->mlx_win, key_hook, list);
-
-	
+	mlx_hook(list->mlx_win, 4, 0, mouse, list);
 	mlx_loop(list->mlx);
+	return (list);
 }

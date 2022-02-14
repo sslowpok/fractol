@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:03:28 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 09:27:08 by alex             ###   ########.fr       */
+/*   Updated: 2022/02/14 16:31:32 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	draw_fractal(t_win *list)
 		j = 0;
 		while (j++ < HEIGHT)
 		{
-			x = (i - 500) / (double) 250;
-			y = (500 - j) / (double) 250;
+			x = (double) (i - 500) / list->fractal->scale;
+			y = (double) (500 - j) / list->fractal->scale;
 			iter = fractal_iter(list->fractal, x, y);
 			my_mlx_pixel_put(list, i, j, 1375 * iter);
 		}
