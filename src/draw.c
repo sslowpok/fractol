@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:03:28 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 16:31:32 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/14 18:36:04 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	fractal_iter(t_fractal *fractal, double x, double y)
 	}
 	 else if (fractal->name == JULIA)
 	{
-		c_re = 0;
-		c_im = 0;
+		c_re = 0.36;
+		c_im = 0.36;
 	}
 	i = 0;
 	while (i < 100 && (x * x + y * y < 4))
@@ -68,8 +68,9 @@ void	draw_fractal(t_win *list)
 		{
 			x = (double) (i - 500) / list->fractal->scale;
 			y = (double) (500 - j) / list->fractal->scale;
+			// сюда можно добавить пперемещение
 			iter = fractal_iter(list->fractal, x, y);
-			my_mlx_pixel_put(list, i, j, 1375 * iter);
+			my_mlx_pixel_put(list, i, j,  102 * iter);
 		}
 	}
 	mlx_put_image_to_window(list->mlx, list->mlx_win, list->img, 0, 0);
