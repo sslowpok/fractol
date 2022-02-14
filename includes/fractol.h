@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:48:10 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 16:18:58 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/14 18:46:14 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct	s_win {
 	t_fractal	*fractal;
 }		t_win;
 
-t_win	*new_window(int argc, char **argv);
+void	new_window(int argc, char **argv);
 void	my_mlx_pixel_put(t_win *data, int x, int y, int color);
 int		key_hook(int keycode, t_win *list);
 void	draw_fractal(t_win *list);

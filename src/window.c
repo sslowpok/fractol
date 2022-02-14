@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:27:58 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 16:24:37 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/14 18:46:07 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_fractal	*init_fractal(int argc, char **argv)
 	return (fractal);
 }
 
-t_win	*new_window(int argc, char **argv)
+void	new_window(int argc, char **argv)
 {
 	t_win	*list;
 
@@ -86,5 +86,4 @@ t_win	*new_window(int argc, char **argv)
 	mlx_key_hook(list->mlx_win, key_hook, list);
 	mlx_hook(list->mlx_win, 4, 0, mouse, list);
 	mlx_loop(list->mlx);
-	return (list);
 }

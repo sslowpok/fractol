@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:07:49 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 18:42:22 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/14 18:51:44 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ int	key_hook(int keycode, t_win *list)
 		close_win(keycode, list);
 		return (0);
 	}
-	else
-		return (keycode);
+	else if (keycode == KEY_Q)
+		list->fractal->max_iter *= 0.95;
+	else if (keycode == KEY_E)
+		list->fractal->max_iter *= 1.05;
+	// else
+	// 	return (keycode);
 	draw_fractal(list);
 	return (keycode);
 }
@@ -73,8 +77,8 @@ int	mouse(int button, int x, int y, t_win *list)
 		zoom(button, list->fractal);
 		draw_fractal(list);
 	}
-	// (void)x;
-	// (void)y;
+	(void)x;
+	(void)y;
 	
 	return (0);
 }
