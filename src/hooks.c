@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:07:49 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 18:51:44 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:29:15 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,30 @@ int	key_hook(int keycode, t_win *list)
 {
 	t_fractal	*fractal;
 
+	mlx_clear_window(list->mlx, list->mlx_win);
 	fractal = list->fractal;
-	ft_printf("key_hook %d\n", keycode);
+	ft_printf("key_hook\n");
 	if (keycode == KEY_ESC)
-	{
 		close_win(keycode, list);
-		return (0);
+	// else if (keycode == KEY_Q)
+	// 	list->fractal->max_iter *= 0.95;
+	// else if (keycode == KEY_E)
+	// 	list->fractal->max_iter *= 1.05;
+	else if (keycode == KEY_A)
+		list->fractal->x0 -= 50;
+	else if (keycode == KEY_D)
+		list->fractal->x0 += 50;
+	else if (keycode == KEY_W)
+		list->fractal->y0 += 50;
+	else if (keycode == KEY_S)
+		list->fractal->y0 -= 50;
+	else if (keycode == KEY_C)
+	{
+		list->fractal->r += 20;
+		list->fractal->g += 5;
+		list->fractal->b += 7;
+
 	}
-	else if (keycode == KEY_Q)
-		list->fractal->max_iter *= 0.95;
-	else if (keycode == KEY_E)
-		list->fractal->max_iter *= 1.05;
 	// else
 	// 	return (keycode);
 	draw_fractal(list);
@@ -71,14 +84,21 @@ static void	zoom(int button, t_fractal *fractal)
 
 int	mouse(int button, int x, int y, t_win *list)
 {
-	ft_printf("mouse hook\n");
+	mlx_clear_window(list->mlx, list->mlx_win);
 	if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
 	{
+		if (button == MOUSE_SCROLL_UP)
+		{
+			list->fractal->x0 += (x - WIDTH / 2) * 0.3;
+			list->fractal->y0 -= (y - HEIGHT / 2)* 0.3;
+		}
+		else if (button == MOUSE_SCROLL_DOWN)
+		{
+			list->fractal->x0 -= (WIDTH / 2 - x) * 0.3;
+			list->fractal->y0 += (HEIGHT / 2 - y) * 0.3;
+		}
 		zoom(button, list->fractal);
 		draw_fractal(list);
-	}
-	(void)x;
-	(void)y;
-	
+	}	
 	return (0);
 }

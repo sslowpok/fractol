@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:03:28 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 18:53:05 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:49:44 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	draw_fractal(t_win *list)
 	double		x;
 	double		y;
 	int			iter;
+	int	color;
 
 	i = 0;
 	while (i++ < WIDTH)
@@ -66,13 +67,13 @@ void	draw_fractal(t_win *list)
 		j = 0;
 		while (j++ < HEIGHT)
 		{
-			x = (double) (i - 500) / list->fractal->scale;
-			y = (double) (500 - j) / list->fractal->scale;
+			x = (double) (i + list->fractal->x0) / list->fractal->scale;
+			y = (double) (list->fractal->y0 - j) / list->fractal->scale;
 			// сюда можно добавить пперемещение
 			iter = fractal_iter(list->fractal, x, y);
-			my_mlx_pixel_put(list, i, j,  102 * iter);
+			color = ((255 - iter * list->fractal->r) << 16) + ((255 - iter * list->fractal->g) << 8) + (255 - iter * list->fractal->b);
+			my_mlx_pixel_put(list, i, j,  color);
 		}
 	}
 	mlx_put_image_to_window(list->mlx, list->mlx_win, list->img, 0, 0);
-	
 }

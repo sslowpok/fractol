@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:48:10 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 18:46:14 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:44:52 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef struct	s_fractal
 	int		max_iter;
 	int		color;
 	double	scale;
+	double	x0;
+	double	y0;
+	int		r;
+	int		g;
+	int		b;
 }	t_fractal;
 
 typedef struct	s_win {

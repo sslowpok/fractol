@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:27:58 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/14 18:46:07 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:13:11 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ t_fractal	*init_fractal(int argc, char **argv)
 	fractal_name(argc, argv, fractal);
 	fractal->max_iter = MAX_ITER;
 	fractal->scale = 250;
+	fractal->x0 = -500;
+	fractal->y0 = 500;
+	fractal->r = 0;
+	fractal->g = 10;
+	fractal->b = 20;
 	return (fractal);
 }
 
