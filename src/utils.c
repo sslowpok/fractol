@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 12:47:59 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/19 16:34:39 by sslowpok         ###   ########.fr       */
+/*   Created: 2022/02/19 15:39:20 by sslowpok          #+#    #+#             */
+/*   Updated: 2022/02/19 16:49:08 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-#include "../includes/error.h"
 
-int	main(int argc, char **argv)
+void	my_mlx_pixel_put(t_win *data, int x, int y, int color)
 {
-	if (argc < 2)
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 == *s2++)
 	{
-		ft_printf("more params!\n");
-		return (0);
-	}
-	if (ft_strlen(argv[1]) != 5)
-	{
-		if (ft_strlen(argv[1]) != 10)
+		if (*s1++ == '\0')
 		{
-			if (ft_strlen(argv[1]) != 4)
-			{
-				ft_printf("Invalid input.\n");
-				exit (INVALID_DATA);
-			}
+			return (0);
 		}
 	}
-	new_window(argc, argv);
-	return (0);
+	return (*(unsigned char *)s1 - *(unsigned char *)(s2 - 1));
 }

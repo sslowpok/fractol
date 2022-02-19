@@ -9,11 +9,13 @@ LIBFT_DIR =		./libft/
 SRC_LIST =	main.c \
 			window.c \
 			draw.c \
-			hooks.c
+			hooks.c \
+			utils.c
 
 OBJ_LIST =	$(SRC:.c=.o)
 HEADERS_LIST =	fractol.h \
-				error.h
+				error.h \
+				events.h
 
 SRC =	$(addprefix $(SRC_DIR), $(SRC_LIST))
 OBJ =	$(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
@@ -23,26 +25,22 @@ LIBFTPRINTF =	$(addprefix $(PRINTF_DIR), libftprintf.a)
 LIBFT =		$(addprefix $(LIBFT_DIR), libft.a)
 
 RM =	rm -rf
-CC =	gcc
+CC =	cc
 CFLAGS =	-Wall -Wextra -Werror
 LDFLAGS	=	-L$(LIBFT_DIR) -L$(PRINTF_DIR) -L$(LIBMLX_DIR) -lmlx -Lmlx -framework OpenGL -framework Appkit -lz
 
-all:	$(PRINTF) $(LIBFT) $(NAME)
+all:	$(LIBFT) $(NAME)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c $(HEADERS) | $(OBJ_DIR)
 			$(CC) -I$(HEADERS_DIR) $(CFLAGS) -c $< -o $@
 
 $(LIBFT):
 		make -C $(LIBFT_DIR)
-
-$(PRINTF):
 		make -C $(PRINTF_DIR)
-
-$(LIBMLX):
 		make -C $(LIBMLX_DIR)
 
 $(NAME): $(OBJ)
-		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LIBFTPRINTF) $(LDFLAGS) -o $@
+		$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LIBFTPRINTF) $(LIBMLX) $(LDFLAGS) -o $@
 
 $(OBJ_DIR):
 		mkdir $(OBJ_DIR)
@@ -50,8 +48,8 @@ $(OBJ_DIR):
 clean:
 		$(RM) $(OBJS_DIR)
 		make clean -C ./libft/
-		#make clean -C ./printf/
-		#make clean -C ./mlx/
+		make clean -C ./printf/
+		make clean -C ./mlx/
 
 fclean:	clean
 		$(RM) $(NAME)

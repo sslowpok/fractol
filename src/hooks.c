@@ -6,36 +6,19 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:07:49 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/16 17:29:15 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/19 16:37:36 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 #include "../includes/events.h"
 
-// void	ft_exit(void)
-// {
-// 	exit(0);
-// }
-
 int	close_win(int keycode, t_win *list)
 {
-	ft_printf("exit\n");
 	(void)list;
 	exit(0);
 	return (keycode);
 }
-
-//void	move(int keycode, t_fractal *fractal)
-//{
-//	double	shift;
-
-//	shift = (2.0 + 2.0) * SHIFT_SCALE;
-//	if (keycode == KEY_A)
-//	{
-//		fractal->max_iter
-//	}
-//}
 
 int	key_hook(int keycode, t_win *list)
 {
@@ -43,30 +26,22 @@ int	key_hook(int keycode, t_win *list)
 
 	mlx_clear_window(list->mlx, list->mlx_win);
 	fractal = list->fractal;
-	ft_printf("key_hook\n");
 	if (keycode == KEY_ESC)
 		close_win(keycode, list);
-	// else if (keycode == KEY_Q)
-	// 	list->fractal->max_iter *= 0.95;
-	// else if (keycode == KEY_E)
-	// 	list->fractal->max_iter *= 1.05;
 	else if (keycode == KEY_A)
-		list->fractal->x0 -= 50;
+		fractal->x0 -= 50;
 	else if (keycode == KEY_D)
-		list->fractal->x0 += 50;
+		fractal->x0 += 50;
 	else if (keycode == KEY_W)
-		list->fractal->y0 += 50;
+		fractal->y0 += 50;
 	else if (keycode == KEY_S)
-		list->fractal->y0 -= 50;
+		fractal->y0 -= 50;
 	else if (keycode == KEY_C)
 	{
-		list->fractal->r += 20;
-		list->fractal->g += 5;
-		list->fractal->b += 7;
-
+		fractal->r += 20;
+		fractal->g += 15;
+		fractal->b += 3;
 	}
-	// else
-	// 	return (keycode);
 	draw_fractal(list);
 	return (keycode);
 }
@@ -76,9 +51,9 @@ static void	zoom(int button, t_fractal *fractal)
 	if (button == MOUSE_SCROLL_UP || button == MOUSE_SCROLL_DOWN)
 	{
 		if (button == MOUSE_SCROLL_UP)
-			fractal->scale *= 1.05;
-		else if (button == MOUSE_SCROLL_DOWN)
-			fractal->scale *= 0.95;
+			fractal->scale += (50);
+		else if (button == MOUSE_SCROLL_DOWN && fractal->scale > 0)
+			fractal->scale -= (50);
 	}
 }
 
@@ -89,16 +64,16 @@ int	mouse(int button, int x, int y, t_win *list)
 	{
 		if (button == MOUSE_SCROLL_UP)
 		{
-			list->fractal->x0 += (x - WIDTH / 2) * 0.3;
-			list->fractal->y0 -= (y - HEIGHT / 2)* 0.3;
+			list->fractal->x0 += (x - WIDTH / 2) * 0.4;
+			list->fractal->y0 -= (y - HEIGHT / 2) * 0.4;
 		}
 		else if (button == MOUSE_SCROLL_DOWN)
 		{
-			list->fractal->x0 -= (WIDTH / 2 - x) * 0.3;
-			list->fractal->y0 += (HEIGHT / 2 - y) * 0.3;
+			list->fractal->x0 -= (WIDTH / 2 - x) * 0.4;
+			list->fractal->y0 += (HEIGHT / 2 - y) * 0.4;
 		}
 		zoom(button, list->fractal);
-		draw_fractal(list);
-	}	
+	}
+	draw_fractal(list);
 	return (0);
 }

@@ -6,19 +6,12 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:27:58 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/16 18:13:11 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/19 17:07:42 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 #include "../includes/error.h"
-
-// int	ft_exit(int keycode)
-// {
-// 	(void)keycode;
-// 	exit(0);
-// 	return (0);
-// }
 
 void	argc_check(int argc)
 {
@@ -43,13 +36,15 @@ static t_win	*new_image(t_win *list)
 
 void	fractal_name(int argc, char **argv, t_fractal *fractal)
 {
-	if (ft_strncmp(argv[1], "mandelbrot", 10) == 0)
+	if (ft_strcmp(argv[1], "mandelbrot") == 0)
 	{
 		argc_check(argc);
 		fractal->name = MANDELBROT;
 	}
-	else if (ft_strncmp(argv[1], "julia", 5) == 0)
+	else if (ft_strcmp(argv[1], "julia") == 0)
 		fractal->name = JULIA;
+	else if (ft_strcmp(argv[1], "ship") == 0)
+		fractal->name = SHIP;
 }
 
 t_fractal	*init_fractal(int argc, char **argv)
@@ -64,8 +59,8 @@ t_fractal	*init_fractal(int argc, char **argv)
 	fractal->scale = 250;
 	fractal->x0 = -500;
 	fractal->y0 = 500;
-	fractal->r = 0;
-	fractal->g = 10;
+	fractal->r = 5;
+	fractal->g = 50;
 	fractal->b = 20;
 	return (fractal);
 }
@@ -85,10 +80,8 @@ void	new_window(int argc, char **argv)
 		exit (INIT_ERROR);
 	new_image(list);
 	list->fractal = init_fractal(argc, argv);
-	// mlx_hook(list->mlx_win, 2, 0, key_hook, list);
-	// mlx_hook(list->mlx_win, 17, 0, close_win, list);
-	// mlx_hook(list->mlx_win, 4, 0, mouse, list);
 	mlx_key_hook(list->mlx_win, key_hook, list);
+	mlx_hook(list->mlx_win, 17, 0, close_win, list);
 	mlx_hook(list->mlx_win, 4, 0, mouse, list);
 	mlx_loop(list->mlx);
 }
