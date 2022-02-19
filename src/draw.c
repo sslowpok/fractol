@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:03:28 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/19 17:08:19 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:35:13 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	ship_fractal(double x, double y, double c_re, double c_im)
 		tmp_re = x * x - y * y;
 		tmp_im = 2 * fabs(x * y);
 		x = tmp_re + c_re;
-		y = tmp_im + c_im;
+		y = -tmp_im + c_im;
 		i++;
 	}
 	return (i);

@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:48:10 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/19 16:49:15 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:53:25 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_fractal
 	int		r;
 	int		g;
 	int		b;
+	int		zoom_in_scale;
+	int		zoom_out_scale;
 }	t_fractal;
 
 typedef struct s_win

@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:27:58 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/19 17:07:42 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:57:58 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ t_fractal	*init_fractal(int argc, char **argv)
 	fractal->r = 5;
 	fractal->g = 50;
 	fractal->b = 20;
+	fractal->zoom_in_scale = 50;
+	fractal->zoom_out_scale = 50;
 	return (fractal);
 }
 
