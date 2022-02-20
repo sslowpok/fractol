@@ -46,7 +46,7 @@ $(OBJ_DIR):
 		mkdir $(OBJ_DIR)
 
 clean:
-		$(RM) $(OBJS_DIR)
+		$(RM) $(OBJ_DIR)
 		make clean -C ./libft/
 		make clean -C ./printf/
 		make clean -C ./mlx/
