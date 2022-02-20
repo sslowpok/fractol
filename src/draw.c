@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:03:28 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/20 16:41:23 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:52:12 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ship_fractal(double x, double y, double c_re, double c_im)
 	return (i);
 }
 
-int	fractal_iter(t_fractal *fractal, double x, double y)
+static int	fractal_iter(t_fractal *fractal, double x, double y)
 {
 	double	c_re;
 	double	c_im;

@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:27:58 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/20 16:43:39 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:54:06 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_win	*new_image(t_win *list)
 	return (list);
 }
 
-void	fractal_name(int argc, char **argv, t_fractal *fractal)
+static void	fractal_name(int argc, char **argv, t_fractal *fractal)
 {
 	if (ft_strcmp(argv[1], "mandelbrot") == 0)
 	{
@@ -50,7 +50,7 @@ void	fractal_name(int argc, char **argv, t_fractal *fractal)
 		fractal->name = SHIP;
 }
 
-t_fractal	*init_fractal(int argc, char **argv)
+static t_fractal	*init_fractal(int argc, char **argv)
 {
 	t_fractal	*fractal;
 
