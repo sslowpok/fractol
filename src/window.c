@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 15:27:58 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/19 18:57:58 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:43:39 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void	fractal_name(int argc, char **argv, t_fractal *fractal)
 		fractal->name = MANDELBROT;
 	}
 	else if (ft_strcmp(argv[1], "julia") == 0)
+	{
 		fractal->name = JULIA;
+		julia_arg(argc, argv, fractal);
+	}
 	else if (ft_strcmp(argv[1], "ship") == 0)
 		fractal->name = SHIP;
 }
@@ -54,7 +57,6 @@ t_fractal	*init_fractal(int argc, char **argv)
 	fractal = malloc(sizeof(t_fractal));
 	if (!fractal)
 		exit (BAD_MEMALLOC);
-	fractal_name(argc, argv, fractal);
 	fractal->max_iter = MAX_ITER;
 	fractal->scale = 250;
 	fractal->x0 = -500;
@@ -62,6 +64,7 @@ t_fractal	*init_fractal(int argc, char **argv)
 	fractal->r = 5;
 	fractal->g = 50;
 	fractal->b = 20;
+	fractal_name(argc, argv, fractal);
 	fractal->zoom_in_scale = 50;
 	fractal->zoom_out_scale = 50;
 	return (fractal);

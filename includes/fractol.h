@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 12:48:10 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/19 18:53:25 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:43:24 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,9 @@ int		mouse(int keycode, int x, int y, t_win *list);
 int		close_win(int keycode, t_win *list);
 int		ft_strcmp(const char *s1, const char *s2);
 void	my_mlx_pixel_put(t_win *data, int x, int y, int color);
+void	argc_check(int argc);
+double	ft_double(char *nbr);
+int		check(char *str);
+void	julia_arg(int argc, char **argv, t_fractal *fractal);
 
 #endif

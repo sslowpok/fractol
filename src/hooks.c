@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:07:49 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/19 18:57:34 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:41:34 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,14 @@ static void	zoom(int button, t_fractal *fractal)
 	{
 		if (button == MOUSE_SCROLL_UP)
 		{
-			fractal->scale += fractal->zoom_in_scale;
-			fractal->zoom_in_scale *= 1.5;
+			fractal->scale += (double) fractal->zoom_in_scale;
 			fractal->zoom_out_scale = 50;
 		}
 		else if (button == MOUSE_SCROLL_DOWN && fractal->scale > 0)
 		{
-			fractal->scale -= fractal->zoom_out_scale;
-			fractal->zoom_out_scale *= 1.5;
+			fractal->scale -= (double) fractal->zoom_out_scale;
 			fractal->zoom_in_scale = 50;
 		}
-		
 	}
 }
 
@@ -73,8 +70,8 @@ int	mouse(int button, int x, int y, t_win *list)
 	{
 		if (button == MOUSE_SCROLL_UP)
 		{
-			list->fractal->x0 += (x - WIDTH / 2) * 0.4;
-			list->fractal->y0 -= (y - HEIGHT / 2) * 0.4;
+			list->fractal->x0 += (x - WIDTH / 2) * 0.5;
+			list->fractal->y0 -= (y - HEIGHT / 2) * 0.5;
 		}
 		else if (button == MOUSE_SCROLL_DOWN)
 		{

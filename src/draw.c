@@ -6,7 +6,7 @@
 /*   By: sslowpok <sslowpok@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:03:28 by sslowpok          #+#    #+#             */
-/*   Updated: 2022/02/19 18:35:13 by sslowpok         ###   ########.fr       */
+/*   Updated: 2022/02/20 16:41:23 by sslowpok         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	fractal_iter(t_fractal *fractal, double x, double y)
 	else if (fractal->name == JULIA)
 	{
 		c_re = 0.36;
-		c_im = 0.36;
+		c_im = 0.41;
 		return (get_iter(x, y, c_re, c_im));
 	}
 	return (0);
